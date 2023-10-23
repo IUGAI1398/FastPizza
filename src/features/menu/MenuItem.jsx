@@ -5,7 +5,7 @@ function MenuItem({ pizza }) {
     <li>
       <img src={imageUrl} alt={name} />
       <div>
-        <p>{name}</p>
+        <p>{name} Pizza</p>
         <p>{ingredients.join(', ')}</p>
         <div>
           {!soldOut ? <p>{(unitPrice)}</p> : <p>Sold out</p>}
