@@ -47,13 +47,13 @@ function CreateOrder() {
       <Form method="POST" action="">
         <div>
           <label>First Name</label>
-          <input type="text" name="customer" required />
+          <input type="text" className="input" name="customer" required />
         </div>
 
         <div>
           <label>Phone number</label>
           <div>
-            <input type="tel" name="phone" required />
+            <input  className="input" type="tel" name="phone" required />
           </div>
           {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
@@ -61,12 +61,13 @@ function CreateOrder() {
         <div>
           <label>Address</label>
           <div>
-            <input type="text" name="address" required />
+            <input     className="input" type="text" name="address" required />
           </div>
         </div>
 
         <div>
           <input
+          className="h-6 w-6 accent-yellow-400 focus:decoration-none focus:ring focus:ring-yellow-400"
             type="checkbox"
             name="priority"
             id="priority"
@@ -78,7 +79,9 @@ function CreateOrder() {
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)}/>
-          <button disabled={isSubmitinh}> { isSubmitinh ? "Place order..." :  'Order now'}</button>
+          <button 
+          className=
+          "bg-yellow-400 focus:ring active:bg-slate-400 focus:ring-yellow-300 focus:ring-offset-2 focus:bg-yellow-300 tracking-wide transition-colors duration-300 rounded-full uppercase font-semibold text-stone-800  px-4 py-3 inline-block hover:bg-yellow-300 disabled:cursor-not-allowed" disabled={isSubmitinh}> { isSubmitinh ? "Place order..." :  'Order now'}</button>
         </div>
       </Form>
     </div>
@@ -100,7 +103,6 @@ export async function action({ request }) {
   const newOrder = await createOrder(order)
   return redirect(`/order/${newOrder.id}`);
 
-  //If everything is okay, create new order and redirect
 }
 
 export default CreateOrder;

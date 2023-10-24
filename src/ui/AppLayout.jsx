@@ -9,13 +9,15 @@ export default function AppLayout() {
   const isLoading = navigaton.state === "loading";
   console.log(navigaton);
   return (
-    <div className='layout'>
+    <div className='grid-rows-[auto_1fr_auto] grid h-screen'>
 
    {isLoading && <Loader/>}
       <Header />
-      <main>
+      <div className='overflow-scrool'>
+      <main className='max-w-3xl  mx-auto'>
         <Outlet />
       </main>
+      </div>
       <CartOverview />
     </div>
   )
