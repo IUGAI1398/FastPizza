@@ -96,6 +96,7 @@ export async function action({ request }) {
     ...data, cart: JSON.parse(data.cart),
     priorety: data.priorety === "on"
   }
+  
   const erros = {}
   if (!isValidPhone(order.phone)) erros.phone = 'Please give us your correct phone number. We might need it to contac you'
   if (Object.keys(erros).length > 0) return erros;
