@@ -7,6 +7,6 @@ export default function Username() {
   if (!username) return null
   
   return (
-    <div className='text-sm font-semibold hidden md:block'>{username}</div>
+    <div className='text-sm font-semibold hidden md:block sm:block'>{username}</div>
   )
 }
