@@ -42,45 +42,45 @@ function CreateOrder() {
   const cart = fakeCart;
 
   return (
-    <div>
-      <h2>Ready to order? Let's go!</h2>
+    <div className="px-4 py-6">
+      <h2 className="text-xl font-semibold mb-8">Ready to order? Let's go!</h2>
 
       <Form method="POST" action="">
-        <div>
-          <label>First Name</label>
-          <input type="text" className="input" name="customer" required />
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center">
+          <label className="sm:basis-40">First Name</label>
+          <input type="text" className="input grow" name="customer" required />
         </div>
 
-        <div>
-          <label>Phone number</label>
-          <div>
-            <input  className="input" type="tel" name="phone" required />
-          </div>
-          {formErrors?.phone && <p>{formErrors.phone}</p>}
-        </div>
-
-        <div>
-          <label>Address</label>
-          <div>
-            <input     className="input" type="text" name="address" required />
+        <div className="mb-5  gap-2 flex flex-col sm:flex-row sm:items-center">
+          <label className="sm:basis-40">Phone Number</label>
+          <div className="grow">
+            <input className="input w-full" type="tel" name="phone" required />
+            {formErrors?.phone && <p className="text-xs mt-2 text-red-700 p-2 rounded-full bg-red-100">{formErrors.phone}</p>}
           </div>
         </div>
 
-        <div>
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center">
+          <label className="sm:basis-40">Address</label>
+          <div className="grow">
+            <input className="input w-full" type="text" name="address" required />
+          </div>
+        </div>
+
+        <div className="mb-12 flex gap-5 items-center">
           <input
-          className="h-6 w-6 accent-yellow-400 focus:decoration-none focus:ring focus:ring-yellow-400"
+            className="h-6 w-6 accent-yellow-400 focus:decoration-none focus:ring focus:ring-yellow-400"
             type="checkbox"
             name="priority"
             id="priority"
           // value={withPriority}
           // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority">Want to yo give your order priority?</label>
+          <label htmlFor="priority" className="font-medium">Want to yo give your order priority?</label>
         </div>
 
         <div>
-          <input type="hidden" name="cart" value={JSON.stringify(cart)}/>
-          <Button disabled={isSubmitinh}> {isSubmitinh ? 'Placeing order' : 'order now'}</Button>
+          <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+          <Button type="primary" disabled={isSubmitinh}> {isSubmitinh ? 'Placeing order' : 'order now'}</Button>
         </div>
       </Form>
     </div>
@@ -93,7 +93,7 @@ export async function action({ request }) {
   console.log(data);
 
   const order = {
-    ...data, cart : JSON.parse(data.cart),
+    ...data, cart: JSON.parse(data.cart),
     priorety: data.priorety === "on"
   }
   const erros = {}
